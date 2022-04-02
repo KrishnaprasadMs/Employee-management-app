@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+body{
+    font-family: sans-serif;
+   }
+   #nav-bar{
+       position: sticky;
+       top:0;
+       z-index: 20px;
+   }
+   .navbar{
+       background-image: linear-gradient(to right,#060546,hsl(229, 84%, 41%));
+       padding: 10px;
+   } 
+   #navbarNav{
+       padding: 10px;
+          margin: 0 800px;
+   }
+   .navbar-brand img{
+       height: 40px;
+       padding-left: 20PX;
+   }
+   .navbar-nav li a{
+       color: #fff;
+       font-weight: 600;
+       float: right;
+       text-align:left;
+   }
+   
+   .navbar-toggler{
+       outline: none;
+   }

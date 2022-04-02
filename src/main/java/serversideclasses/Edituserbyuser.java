@@ -1,0 +1,48 @@
+package serversideclasses;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import project.User;
+import project.UserDAO;
+
+/**
+ * Servlet implementation class Edituserbyuser
+ */
+public class Edituserbyuser extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Edituserbyuser() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		int emp_id = Integer.parseInt(request.getParameter("emp_id"));
+		String emp_name = request.getParameter("emp_name");
+		String user_name = request.getParameter("user_name");
+		String password = request.getParameter("password");
+		String gender = request.getParameter("gender");
+		boolean t = UserDAO.updateUserListbyemployee(emp_id, emp_name, user_name, password, gender);
+		if(t) {
+			System.out.println("Updated");
+			}
+		else {System.out.println("Error while Updating");}
+		ArrayList<User> list = UserDAO.readAllUserByID();
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("editsucces.jsp").forward(request, response); 
+	}
+
+}
